@@ -1,0 +1,60 @@
+/* ChatbotStyles.css */
+
+body {
+  margin: 0; /* Ensure no default margin on the body */
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: scroll;
+}
+
+#panelcontent {
+  padding: 10px;
+  transition: all 0.25s linear 0s;
+}
+
+#overview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.chat-bubble {
+  margin-bottom: 10px;
+  font-size: 13px;
+  padding: 10px;
+  border-radius: 5px;
+  width: fit-content;
+  text-align: center;
+}
+
+.chat-bubble-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.user-chat-bubble {
+  align-self: flex-end;
+  color: black;
+  background: #cbcdd6;
+}
+
+.bot-reply-bubble {
+  align-self: flex-start;
+  color: white;
+  background: #004f83;
+}
+
+footer {
+  margin-top: 20px;
+}

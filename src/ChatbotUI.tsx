@@ -6,6 +6,7 @@ import {
   ModusTextInput,
 } from "@trimble-oss/modus-react-components";
 import "@trimbleinc/modus-react-bootstrap/css/dist/modus-react-bootstrap.min.css";
+import "./ChatbotStyle.css";
 
 var expanded: boolean = false;
 var showOverview:boolean = true;
@@ -66,15 +67,7 @@ const ChatbotUI = () => {
       <div id="dataTemplate">
         <div
           id="container"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            height: "100vh",
-            width: "100vw",
-            position: "relative",
-            overflow:"scroll",
-          }}
+          className="container-style"
         >
           <ModusSideNavigation
             max-width="300px"
@@ -87,26 +80,18 @@ const ChatbotUI = () => {
           ></ModusSideNavigation>
 
           <div
-            id="panelcontent"
-            style={{ padding: "10px", transition: "all 0.25s linear 0s" }}
-          >
+            id="panelcontent" className="panelcontent-style">
             {showOverview && (
             <div
               id="overview"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-              }}
+              className="overview"
             >
               <h1>Welcome to Chatbot UI</h1>
               <p>Chatbot Ul is an open source clone of OpenAI's ChatGPT UI.</p>
               <h6>Important: Chatbot Ul is 100% unaffiliated with OpenAI.</h6>
               <br />
               <p style={{ fontSize: "13px" }}>
-                Chatbot Ul allows you to plug in your API key to use this UI
+                Chatbot UI allows you to plug in your API key to use this UI
                 with their API.
                 <br />
                 It is only used to communicate with their API.
@@ -119,26 +104,18 @@ const ChatbotUI = () => {
               </p>
             </div>
             )}
-             <div>
-                {chatBubbles.map((message, index) => (
-                  <div
-                    key={index}
-                    style={{ marginBottom: "10px", textAlign:"center", fontSize: "13px", color:message.isUser? "black": "white", display: "flex",
-                    justifyContent: message.isUser ? "flex-end" : "flex-start",}}
-                  >
-                    <div
-                      style={{
-                        background: message.isUser? "#cbcdd6" : "#004f83",
-                        padding: "10px",
-                        borderRadius: "5px",
-                        width: "fit-content",
-                      }}
-                    >
-                      {message.text}
-                    </div>
+            <div className="chat-bubble-container">
+              {chatBubbles.map((message, index) => (
+                <div
+                key={index}
+                className={`chat-bubble ${message.isUser ? 'user-chat-bubble' : 'bot-reply-bubble'}`}
+                >
+                  <div>
+                    {message.text}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
+            </div>
             <footer>
               <ModusTextInput
                 placeholder="Message Chatbot"
@@ -154,6 +131,7 @@ const ChatbotUI = () => {
                 Send
               </ModusTextInput>
             </footer>
+
           </div>
         </div>
       </div>
